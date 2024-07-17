@@ -1,0 +1,23 @@
+[package]
+publish = false
+name = "aho-corasick-fuzz"
+version = "0.0.0"
+authors = ["Automatically generated"]
+edition = "2021"
+
+# Prevent this from interfering with workspaces
+[workspace]
+members = ["."]
+
+[dependencies]
+aho-corasick = { path = ".." }
+libfuzzer-sys = { version = "0.4", features = ["arbitrary-derive"] }
+
+[[bin]]
+name = "fuzz-find"
+path = "fuzz-targets/fuzz_find.rs"
+test = false
+doc = false
+
+[package.metadata]
+cargo-fuzz = true

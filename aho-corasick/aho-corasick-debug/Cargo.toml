@@ -1,0 +1,33 @@
+[package]
+publish = false
+name = "aho-corasick-debug"
+version = "0.0.1"
+authors = ["Andrew Gallant <jamslam@gmail.com>"]
+description = "A simple command line tool for playing with Aho-Corasick."
+license = "Unlicense/MIT"
+categories = ["text-processing"]
+autotests = false
+edition = "2018"
+
+[[bin]]
+name = "aho-corasick-debug"
+path = "main.rs"
+
+[dependencies]
+aho-corasick = { version = "*", path = "..", features = ["logging"] }
+anyhow = "1.0.68"
+memmap2 = "0.5.8"
+
+[dependencies.env_logger]
+version = "0.9.3"
+default-features = false
+# I am quite annoyed that 'auto-color' brings in a whole mess of dependencies,
+# so I am keeping it disabled.
+features = ["humantime"]
+
+[dependencies.clap]
+version = "2.34.0"
+default-features = false
+
+[profile.release]
+debug = true
